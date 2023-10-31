@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = async () => {
       try {
-        const { data } = await api.get('/auth');
+        const { data } = await api.get('auth');
 
         setCurrentUser(data);
       } catch (error) {
