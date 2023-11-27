@@ -18,6 +18,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Configure Git identity
+        run: |
+          git config user.email "yevhenprudnik@gmail.com"
+          git config user.name "Yevhen Prudnik"
       - name: Install NPM dependencies
         run: |
           npm install
