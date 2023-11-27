@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/photobook-frontend/static/css/main.27dfc7ca.css",
-    "main.js": "/photobook-frontend/static/js/main.04726bc7.js",
+    "main.js": "/photobook-frontend/static/js/main.4f1343a9.js",
     "static/media/logo.svg": "/photobook-frontend/static/media/logo.1efbe6ebfb2c7e232f851ffdb46bed52.svg",
     "index.html": "/photobook-frontend/index.html",
     "main.27dfc7ca.css.map": "/photobook-frontend/static/css/main.27dfc7ca.css.map",
-    "main.04726bc7.js.map": "/photobook-frontend/static/js/main.04726bc7.js.map"
+    "main.4f1343a9.js.map": "/photobook-frontend/static/js/main.4f1343a9.js.map"
   },
   "entrypoints": [
     "static/css/main.27dfc7ca.css",
-    "static/js/main.04726bc7.js"
+    "static/js/main.4f1343a9.js"
   ]
 }
