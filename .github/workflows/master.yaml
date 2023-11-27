@@ -7,28 +7,20 @@ on:
 
 jobs:
   deploy:
-    name: deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set-up Node
+        uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Configure Git identity
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
-      - name: Install NPM dependencies
-        run: |
-          npm install
-          npm install -g gh-pages
+          node-version: "18.x"
+      - run: npm install
+      - run: npm run build
       - name: Deploy
-        run: |
-          git config --global credential.helper store
-          git checkout master
-          git pull
-          npx gh-pages -d build -t ${{ secrets.GH_TOKEN }}
+        uses: crazy-max/ghaction-github-pages@v1
+        with:
+          target_branch: gh-pages
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
