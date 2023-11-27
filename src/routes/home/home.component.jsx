@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div>
-      Hello, GH-actions!
+      Hello, World!
       <br />
       {currentUser?.username}
     </div>
