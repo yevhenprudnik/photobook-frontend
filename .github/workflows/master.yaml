@@ -26,4 +26,8 @@ jobs:
         run: |
           npm install
       - name: Deploy
-        run: npm run deploy
+        run: |
+          git config --global credential.helper store
+          git checkout master
+          git pull
+          gh-pages -d build -t ${{ secrets.GH_TOKEN }} # Use the PAT stored as secret
