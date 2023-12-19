@@ -9,14 +9,17 @@ const Navigation = () => {
 
   return (
     <Fragment>
-      <div className="navigation">
-        <Link to="/">
-          <Logo className="logo-container" />
+      <div className='navigation'>
+        <Link to='/'>
+          <Logo className='logo-container' />
         </Link>
-        <div className="nav-links-container">
+        <div className='nav-links-container'>
+          <Link to='/photo-book'>PhotoBook</Link>
+        </div>
+        <div className='nav-links-container'>
           {currentUser ? (
             <span
-              className="nav-link"
+              className='nav-link'
               onClick={() => {
                 localStorage.removeItem('accessToken');
                 localStorage.removeItem('refreshToken');
@@ -25,7 +28,7 @@ const Navigation = () => {
               Log Out
             </span>
           ) : (
-            <Link className="nav-link" to="/auth">
+            <Link className='nav-link' to='/auth'>
               Authorize
             </Link>
           )}
