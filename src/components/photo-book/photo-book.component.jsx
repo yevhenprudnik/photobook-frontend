@@ -3,7 +3,7 @@ import './photo-book.styles.scss';
 
 const PhotoBook = () => {
   return (
-    <div>
+    <div className='center'>
       <Link to='/select-template'>Create PhotoBook</Link>
     </div>
   );
