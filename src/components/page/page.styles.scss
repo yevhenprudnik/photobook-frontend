@@ -41,16 +41,7 @@
 .link-container {
   display: flex;
   justify-content: flex-end;
-  width: 80vw; /* или любая другая ширина, которая соответствует вашим требованиям */
+  width: 80vw;
   max-width: 800px;
-  margin-top: 10px; /* или любой другой отступ сверху */
-}
-
-.link-container a {
-  text-decoration: none;
-  padding: 8px 16px;
-  border: 1px solid #000;
-  border-radius: 4px;
-  background-color: #f0f0f0;
-  color: #000;
+  margin-top: 10px;
 }

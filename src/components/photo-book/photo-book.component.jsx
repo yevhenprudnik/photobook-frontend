@@ -4,8 +4,8 @@ import './photo-book.styles.scss';
 import { api } from '../../api/api';
 
 const PhotoBook = () => {
-  const [photoBookName, setPhotoBookName] = useState('Hello');
-  const [photoBookId, setPhotoBookId] = useState(19);
+  const [photoBookName, setPhotoBookName] = useState('');
+  const [photoBookId, setPhotoBookId] = useState();
 
   const handleCreatePhotoBook = async () => {
     try {
