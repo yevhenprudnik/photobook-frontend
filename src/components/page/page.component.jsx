@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import './page.styles.scss';
 import { uploadFile } from '../../firebase/firebase';
 import { api } from '../../api/api';
@@ -30,7 +30,7 @@ const Page = () => {
     }
   };
 
-  const handleGetTemplate = async () => {
+  const handleGetTemplate = useCallback(async () => {
     try {
       const { data } = await api.get(`/template/${templateId}`);
       setHtml(data.html);
@@ -38,7 +38,7 @@ const Page = () => {
     } catch (error) {
       console.log(error.message);
     }
-  };
+  }, [templateId]);
 
   const handleUploadFile = async (file) => {
     try {
@@ -52,7 +52,7 @@ const Page = () => {
 
   useEffect(() => {
     handleGetTemplate();
-  }, [templateId, photoBookId, positionPage]);
+  }, [handleGetTemplate]);
 
   useEffect(() => {
     const updatedHtml = htmlOriginal
