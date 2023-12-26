@@ -39,6 +39,7 @@ const Page = () => {
       console.log(error.message);
     }
   };
+
   const handleUploadFile = async (file) => {
     try {
       const img = await uploadFile(file);
@@ -51,7 +52,7 @@ const Page = () => {
 
   useEffect(() => {
     handleGetTemplate();
-  }, []);
+  }, [templateId, photoBookId, positionPage]);
 
   useEffect(() => {
     const updatedHtml = htmlOriginal
