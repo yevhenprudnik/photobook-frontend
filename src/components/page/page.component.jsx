@@ -2,19 +2,37 @@ import { useEffect, useState } from 'react';
 import './page.styles.scss';
 import { uploadFile } from '../../firebase/firebase';
 import { api } from '../../api/api';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Page = () => {
   const [text, setText] = useState('Your text');
   const [imgUrl, setImgUrl] = useState('');
   const [html, setHtml] = useState(``);
   const [htmlOriginal, setHtmlOriginal] = useState('');
-  const { id } = useParams();
+  const { templateId, positionPage, photoBookId } = useParams();
 
-  console.log(id);
+  const handleSendPage = async () => {
+    try {
+      const data = await api.post('/page', {
+        position: positionPage,
+        type: 'default',
+        photobookId: photoBookId,
+        templateId,
+        replacements: {
+          text1: text,
+          img1: imgUrl,
+        },
+      });
+
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const handleGetTemplate = async () => {
     try {
-      const { data } = await api.get(`/template/${id}`);
+      const { data } = await api.get(`/template/${templateId}`);
       setHtml(data.html);
       setHtmlOriginal(data.html);
     } catch (error) {
@@ -30,6 +48,7 @@ const Page = () => {
       console.log(error.message);
     }
   };
+
   useEffect(() => {
     handleGetTemplate();
   }, []);
@@ -72,6 +91,13 @@ const Page = () => {
             }}
             className='center'
           ></div>
+        </div>
+        <div className='link-container'>
+          <Link
+            to={`/select-template/${photoBookId}/${Number(positionPage) + 1}`}
+          >
+            <button onClick={handleSendPage}>Next</button>
+          </Link>
         </div>
       </div>
     </div>

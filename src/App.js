@@ -13,8 +13,14 @@ function App() {
         <Route index element={<Home />} />
         <Route path='auth' element={<Authentication />} />
         <Route path='photo-book' element={<PhotoBook />} />
-        <Route path='select-template' element={<SelectTemplate />} />
-        <Route path='create-page/:id' element={<Page />} />
+        <Route
+          path='select-template/:photoBookId/:positionPage/'
+          element={<SelectTemplate />}
+        />
+        <Route
+          path='create-page/:photoBookId/:positionPage/:templateId/'
+          element={<Page />}
+        />
       </Route>
     </Routes>
   );
