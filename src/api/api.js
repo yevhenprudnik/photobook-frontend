@@ -13,10 +13,10 @@ export const api = axios.create({
 });
 
 api.interceptors.response.use(
-  response => {
+  (response) => {
     return response;
   },
-  async error => {
+  async (error) => {
     const originalRequest = error.config;
 
     if (error.response.status === 401) {
@@ -33,11 +33,11 @@ api.interceptors.response.use(
 
 async function refreshSession(originalRequest) {
   try {
-    const response = await axios.get(`${baseURL}auth/session`, {
+    const response = await axios.get(`${baseURL}/auth/session`, {
       headers: {
-        Authorization: `Bearer accessToken ${localStorage.getItem(
-          'refreshToken'
-        )}`,
+        authorization: `Bearer ${localStorage.getItem(
+          'accessToken'
+        )} ${localStorage.getItem('refreshToken')}`,
       },
     });
 
