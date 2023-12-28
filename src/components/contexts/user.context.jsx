@@ -13,9 +13,11 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = async () => {
       try {
-        const { data } = await api.get('auth');
+        if (localStorage.getItem('accessToken')) {
+          const { data } = await api.get('auth');
 
-        setCurrentUser(data);
+          setCurrentUser(data);
+        }
       } catch (error) {
         console.log(error);
       }

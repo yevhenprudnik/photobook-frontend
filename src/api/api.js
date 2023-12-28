@@ -19,7 +19,7 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response.status === 401) {
+    if (error.response.status === 401 && localStorage.getItem('accessToken')) {
       console.log('Using interceptor');
 
       await refreshSession(originalRequest);
